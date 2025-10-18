@@ -1,0 +1,13 @@
+# theme = Catppuccin Mocha
+theme = iTerm2 Solarized Dark
+# theme = TokyoNight
+
+maximize
+
+# command = zsh -c nu
+macos-option-as-alt = true
+
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind
+
+working-directory = "/Users/rosslovelace/khanflow-pipelines/dbt-khanflow"

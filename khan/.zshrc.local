@@ -1,0 +1,9 @@
+export DBT_PROJECT_DIR=~/khanflow-pipelines/dbt-khanflow
+export CLOUDSDK_PYTHON=~/.local/share/uv/python/cpython-3.8.20-macos-aarch64-none/bin/python3.8
+
+alias dbtenv='source ~/.venv/dbt_next/bin/activate'
+alias prodman='dbt compile --target prod && mkdir -p ~/Desktop/prod-run-artifacts/ && cp ~/khanflow-pipelines/dbt-khanflow/target/manifest.json $_'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
