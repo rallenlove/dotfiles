@@ -10,4 +10,4 @@ macos-option-as-alt = true
 keybind = alt+arrow_left=unbind
 keybind = alt+arrow_right=unbind
 
-working-directory = "/Users/rosslovelace/khanflow-pipelines/dbt-khanflow"
+config-file = ?config.local
