@@ -4,7 +4,8 @@ export CLOUDSDK_PYTHON=~/.local/share/uv/python/cpython-3.8.20-macos-aarch64-non
 autoload -Uz compinit && compinit
 source $(which uv-virtualenvwrapper.sh)
 
-alias prodman='dbt compile --target prod && mkdir -p ~/Desktop/prod-run-artifacts/ && cp ~/khanflow-pipelines/dbt-khanflow/target/manifest.json $_'
+alias dbtenv=". ~/.venv/dbt_next/bin/activate"
+alias prodman="dbt compile --target prod && mkdir -p ~/Desktop/prod-run-artifacts/ && cp ~/khanflow-pipelines/dbt-khanflow/target/manifest.json $_"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
