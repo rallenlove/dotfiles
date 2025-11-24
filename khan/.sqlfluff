@@ -19,10 +19,11 @@ capitalisation_policy = upper
 
 [sqlfluff:rules:capitalisation.identifiers]
 extended_capitalisation_policy = lower
-ignore_words = _PARTITIONTIME, _TABLE_SUFFIX
+ignore_words = _TABLE_SUFFIX
 
 [sqlfluff:rules:capitalisation.functions]
 extended_capitalisation_policy = upper
+ignore_words_regex = ^`[\w.-]+`$
 
 [sqlfluff:rules:capitalisation.literals]
 capitalisation_policy = upper
