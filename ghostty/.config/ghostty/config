@@ -2,12 +2,14 @@
 theme = iTerm2 Solarized Dark
 # theme = TokyoNight
 
-maximize
+font-family = FiraMono Nerd Font
 
-# command = zsh -c nu
 macos-option-as-alt = true
 
 keybind = alt+arrow_left=unbind
 keybind = alt+arrow_right=unbind
+
+macos-icon = custom
+maximize
 
 config-file = ?config.local

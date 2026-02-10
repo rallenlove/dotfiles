@@ -1,0 +1,7 @@
+# Plugins
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+
+# Completions
+dbt-labs/dbt-completion.bash kind:fpath

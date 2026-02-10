@@ -1,0 +1,55 @@
+cask_args no_quarantine: true
+
+brew "antidote"
+brew "delta"
+brew "fd"
+brew "fzf"
+brew "git"
+brew "helix"
+brew "lazygit"
+brew "markdown-oxide"
+brew "nushell"
+brew "ripgrep"
+brew "starship"
+brew "stow"
+brew "uv"
+brew "yazi"
+brew "zellij"
+brew "zsh"
+
+tap "homebrew-ffmpeg/ffmpeg"
+brew "homebrew-ffmpeg/ffmpeg/ffmpeg", args: ["with-webp"]
+
+cask "font-fira-mono-nerd-font"
+cask "font-commit-mono-nerd-font"
+
+cask "colemak-dh"
+cask "firefox"
+cask "ghostty"
+cask "obsidian"
+cask "zed"
+cask "zen"
+
+cask "codex"
+cask "cursor"
+cask "google-chrome"
+cask "slack"
+cask "visual-studio-code"
+
+# khan-dotfiles dump
+tap "fastly/tap"
+tap "khan/repo"
+brew "coreutils"
+brew "go"
+brew "imagemagick"
+brew "mkcert"
+brew "nss"
+brew "openjdk@21"
+brew "postgresql@14", restart_service: :changed
+brew "pyenv"
+brew "python@3.11"
+brew "redis", restart_service: :changed
+brew "watchman"
+brew "wget"
+brew "fastly/tap/fastly"
+cask "docker-desktop"

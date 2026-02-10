@@ -13,13 +13,16 @@ line_position = leading
 [sqlfluff:indentation]
 tab_space_size = 4
 indented_on_contents = False
+template_blocks_indent = False
 
 [sqlfluff:rules:capitalisation.keywords]
 capitalisation_policy = upper
 
 [sqlfluff:rules:capitalisation.identifiers]
 extended_capitalisation_policy = lower
-ignore_words = _TABLE_SUFFIX
+# Aliases only since not all source tables/columns are snake_case
+unquoted_identifiers_policy = aliases
+# ignore_words = _TABLE_SUFFIX
 
 [sqlfluff:rules:capitalisation.functions]
 extended_capitalisation_policy = upper

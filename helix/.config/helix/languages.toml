@@ -1,4 +1,7 @@
 [[language]]
 name = "sql"
-auto-format = true
-formatter = { command = "sqlfluff", args = ["format", "--templater", "jinja", "--config", "/Users/rosslovelace/.sqlfluff", "-"] }
+auto-format = false
+
+[language.formatter]
+command = "sqlfluff"
+args = ["format", "--templater", "jinja", "--config", "/Users/rosslovelace/.sqlfluff", "--exclude-rules", "CP03", "-"]

@@ -1,12 +1,9 @@
-export DBT_PROJECT_DIR=~/khanflow-pipelines/dbt-khanflow
-export CLOUDSDK_PYTHON=~/.local/share/uv/python/cpython-3.8.20-macos-aarch64-none/bin/python3.8
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-autoload -Uz compinit && compinit
-source $(which uv-virtualenvwrapper.sh)
+export CODEX_HOME="$HOME/.config/codex"
+export DBT_PROJECT_DIR="$HOME/khan/khanflow-pipelines/dbt-khanflow"
+export GITHUB_PAT_TOKEN=$(security find-generic-password -a "${USER}" -s GITHUB_PAT_TOKEN -w)
 
-alias dbtenv=". ~/.venv/dbt_next/bin/activate"
-alias prodman="dbt compile --target prod && mkdir -p ~/Desktop/prod-run-artifacts/ && cp ~/khanflow-pipelines/dbt-khanflow/target/manifest.json $_"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+alias dbtenv="source ~/.venv/dbt_next/bin/activate"

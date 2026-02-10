@@ -1,3 +1,7 @@
-# theme = "catppuccin_mocha"
 theme = "solarized_dark"
-# theme = "tokyonight"
+
+[editor]
+trim-trailing-whitespace = true
+
+[editor.whitespace.render]
+tab = "all"

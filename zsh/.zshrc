@@ -1,11 +1,20 @@
-# Pure prompt
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
-autoload -U promptinit; promptinit
-prompt pure
+# Plugins
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+antidote load
+autoload -Uz compinit && compinit
 
-export EDITOR=hx
-export XDG_CONFIG_HOME="$HOME/.config"
+# Prompt
+eval "$(starship init zsh)"
+
+alias unstow="stow -D"
 
 if [ -s ~/.zshrc.local ]; then
-    . ~/.zshrc.local
+    source ~/.zshrc.local
 fi
+
+# Added by dbt installer
+export PATH="$PATH:/Users/rosslovelace/.local/bin"
+
+# dbt aliases
+alias dbtf=/Users/rosslovelace/.local/bin/dbt

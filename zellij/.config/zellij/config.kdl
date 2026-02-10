@@ -1,10 +1,4 @@
 // https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 theme "solarized-dark"
-
-keybinds {
-    shared_except "locked" {
-        unbind "Alt o"
-    }
-}
-
 on_force_close "quit"
+default_layout "0"
