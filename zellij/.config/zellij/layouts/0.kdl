@@ -24,7 +24,7 @@ layout {
                     command "hx"
                 }
                 pane {
-                    command "codex"
+                    command "claude"
                 }
             }
         }
