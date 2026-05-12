@@ -5,3 +5,11 @@ trim-trailing-whitespace = true
 
 [editor.whitespace.render]
 tab = "all"
+
+[keys.normal]
+"p" = "paste_before"
+"P" = "paste_after"
+
+[keys.normal."space"]
+"p" = "paste_clipboard_before"
+"P" = "paste_clipboard_after"

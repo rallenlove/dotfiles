@@ -4,6 +4,7 @@ export NVM_DIR="$HOME/.config/nvm"
 
 export CODEX_HOME="$HOME/.config/codex"
 export DBT_PROJECT_DIR="$HOME/khan/khanflow-pipelines/dbt-khanflow"
+export DBT_VENV_NAME=dbt_next
 export GITHUB_PAT_TOKEN=$(security find-generic-password -a "${USER}" -s GITHUB_PAT_TOKEN -w)
 
-alias dbtenv="source ~/.venv/dbt_next/bin/activate"
+alias dbtenv='source ~/.venv/${DBT_VENV_NAME}/bin/activate'

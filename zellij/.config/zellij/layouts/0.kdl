@@ -1,10 +1,14 @@
 layout {
-    default_tab_template {
+    default_tab_template hide_floating_panes=true {
+
         // the default zellij tab-bar and status bar plugins
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
         children
+        // floating_panes {
+        //     pane command="yazi"
+        // }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
@@ -12,11 +16,11 @@ layout {
     tab {
         pane split_direction="vertical" {
             pane stacked=true {
-             	pane {
-             	    expanded true
-             	    command "lazygit"
-             	}
-            	pane name="shell"
+                pane {
+                    expanded true
+                    command "lazygit"
+                }
+                pane name="shell"
             }
             pane stacked=true {
                 pane {

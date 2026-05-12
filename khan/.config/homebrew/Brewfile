@@ -25,6 +25,8 @@ brew "homebrew-ffmpeg/ffmpeg/ffmpeg", args: ["with-webp"]
 cask "font-fira-mono-nerd-font"
 cask "font-commit-mono-nerd-font"
 
+brew "mcp-toolbox"
+
 cask "colemak-dh"
 cask "firefox"
 cask "flux-app"
@@ -34,8 +36,6 @@ cask "zed"
 cask "zen"
 
 cask "claude-code"
-cask "codex"
-cask "cursor"
 cask "google-chrome"
 cask "slack"
 cask "visual-studio-code"
