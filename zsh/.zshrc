@@ -13,8 +13,4 @@ if [ -s ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
 
-# Added by dbt installer
-export PATH="$PATH:/Users/rosslovelace/.local/bin"
-
-# dbt aliases
-alias dbtf=/Users/rosslovelace/.local/bin/dbt
+export PATH="/opt/homebrew/opt/ffmpeg-full/bin:$PATH"

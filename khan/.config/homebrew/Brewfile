@@ -1,8 +1,7 @@
-cask_args no_quarantine: true
-
 brew "antidote"
 brew "delta"
 brew "fd"
+brew "ffmpeg-full"
 brew "fzf"
 brew "gh"
 brew "git"
@@ -19,30 +18,36 @@ brew "yazi"
 brew "zellij"
 brew "zsh"
 
-tap "homebrew-ffmpeg/ffmpeg"
-brew "homebrew-ffmpeg/ffmpeg/ffmpeg", args: ["with-webp"]
-
 cask "font-fira-mono-nerd-font"
 cask "font-commit-mono-nerd-font"
 
-brew "mcp-toolbox"
-
+cask "adguard"
 cask "colemak-dh"
 cask "firefox"
 cask "flux-app"
 cask "ghostty"
 cask "obsidian"
+cask "rectangle"
 cask "zed"
 cask "zen"
 
+tap "hashicorp/tap"
+
+brew "d2"
+brew "hashicorp/tap/terraform", trusted: true
+brew "mcp-toolbox"
+
+cask "claude"
 cask "claude-code"
 cask "google-chrome"
 cask "slack"
 cask "visual-studio-code"
 
+mas "Okta Verify", id: 490179405
+
 # khan-dotfiles dump
 tap "fastly/tap"
-tap "khan/repo"
+tap "khan/repo", trusted: true
 brew "coreutils"
 brew "go"
 brew "imagemagick"
@@ -55,5 +60,5 @@ brew "python@3.11"
 brew "redis", restart_service: :changed
 brew "watchman"
 brew "wget"
-brew "fastly/tap/fastly"
+brew "fastly/tap/fastly", trusted: true
 cask "docker-desktop"
