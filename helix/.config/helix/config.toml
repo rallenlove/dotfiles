@@ -3,6 +3,9 @@ theme = "solarized_dark"
 [editor]
 trim-trailing-whitespace = true
 
+[editor.file-picker]
+hidden = false
+
 [editor.whitespace.render]
 tab = "all"
 

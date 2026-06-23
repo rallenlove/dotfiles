@@ -1,0 +1,9 @@
+{
+  "trustedformulae": [
+    "fastly/tap/fastly",
+    "hashicorp/tap/terraform"
+  ],
+  "trustedtaps": [
+    "khan/repo"
+  ]
+}
