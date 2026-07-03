@@ -1,5 +1,3 @@
-cask_args no_quarantine: true
-
 brew "antidote"
 brew "delta"
 brew "fd"
@@ -16,6 +14,7 @@ brew "yazi"
 brew "zellij"
 brew "zsh"
 
+cask "adguard"
 cask "colemak-dh"
 cask "discord"
 cask "firefox"
@@ -25,3 +24,5 @@ cask "transmission"
 cask "ungoogled-chromium"
 cask "zed"
 cask "zen"
+
+mas "uBlock Origin Lite", id: 6745342698
