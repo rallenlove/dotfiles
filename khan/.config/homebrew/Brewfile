@@ -47,6 +47,7 @@ cask "slack"
 cask "visual-studio-code"
 
 mas "Okta Verify", id: 490179405
+mas "uBlock Origin Lite", id: 6745342698
 
 # khan-dotfiles dump
 tap "fastly/tap"
