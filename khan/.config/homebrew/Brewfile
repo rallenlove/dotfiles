@@ -33,13 +33,16 @@ cask "zen"
 
 tap "hashicorp/tap"
 
-brew "d2"
 brew "hashicorp/tap/terraform", trusted: true
+brew "helm"
+brew "helmfile"
+brew "kubectl"
 brew "mcp-toolbox"
 
 cask "claude"
 cask "claude-code"
 cask "google-chrome"
+cask "monitorcontrol"
 cask "slack"
 cask "visual-studio-code"
 
