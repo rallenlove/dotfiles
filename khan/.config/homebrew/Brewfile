@@ -21,7 +21,6 @@ brew "zsh"
 cask "font-fira-mono-nerd-font"
 cask "font-commit-mono-nerd-font"
 
-cask "adguard"
 cask "colemak-dh"
 cask "firefox"
 cask "flux-app"
