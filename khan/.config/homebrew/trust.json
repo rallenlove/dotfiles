@@ -4,6 +4,7 @@
     "hashicorp/tap/terraform"
   ],
   "trustedtaps": [
+    "hashicorp/tap",
     "khan/repo"
   ]
 }

@@ -2,7 +2,7 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export CODEX_HOME="$HOME/.config/codex"
+export CLAUDE_CONFIG_DIR ="$HOME/.config/claude"
 export DBT_PROJECT_DIR="$HOME/khan/khanflow-pipelines/dbt-khanflow"
 export DBT_VENV_NAME=dbt_next
 export GITHUB_PAT_TOKEN=$(security find-generic-password -a "${USER}" -s GITHUB_PAT_TOKEN -w)

@@ -30,23 +30,33 @@ cask "rectangle"
 cask "zed"
 cask "zen"
 
-tap "hashicorp/tap"
+# qmk
+brew "clang-format"
+brew "make"
+brew "hidapi"
+brew "libusb"
+brew "dos2unix"
 
-brew "hashicorp/tap/terraform", trusted: true
+mas "Kagi for Safari", id: 1622835804
+
 brew "helm"
 brew "helmfile"
 brew "kubectl"
 brew "mcp-toolbox"
 
+tap "hashicorp/tap"
+brew "hashicorp/tap/terraform", trusted: true
+
+cask "adguard"
 cask "claude"
 cask "claude-code"
 cask "google-chrome"
 cask "monitorcontrol"
+cask "quarto"
 cask "slack"
 cask "visual-studio-code"
 
 mas "Okta Verify", id: 490179405
-mas "uBlock Origin Lite", id: 6745342698
 
 # khan-dotfiles dump
 tap "fastly/tap"

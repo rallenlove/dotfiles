@@ -14,3 +14,5 @@ if [ -s ~/.zshrc.local ]; then
 fi
 
 export PATH="/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
+
+. "$HOME/.local/share/../bin/env"
