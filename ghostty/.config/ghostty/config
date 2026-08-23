@@ -4,12 +4,21 @@ theme = iTerm2 Solarized Dark
 
 font-family = FiraMono Nerd Font
 
-macos-option-as-alt = true
+macos-icon = custom
+maximize = true
 
+# ─── Keybinds ──────────────────────────────────────────────────────────────
+#
+# Ghostty owns super (cmd) exclusively; everything else belongs to whatever is
+# running inside — zellij takes Alt+arrows, Alt+<digit> and Ctrl+Alt+<letter>,
+# and the TUIs (helix / yazi / claude) get every bare Ctrl+<letter> and every
+# Alt+<letter>. See zellij/.config/zellij/config.kdl for the full tier map.
+
+# Stop ghostty translating these to esc:b / esc:f locally, so they reach zellij
+# as real Alt+arrow presses for pane focus. Helix keeps the equivalent motions
+# on Alt+o/i/n/p, which zellij leaves alone.
+macos-option-as-alt = true
 keybind = alt+arrow_left=unbind
 keybind = alt+arrow_right=unbind
-
-macos-icon = custom
-maximize
 
 config-file = ?config.local
