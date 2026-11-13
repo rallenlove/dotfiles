@@ -1,0 +1,12 @@
+# Only `edit` is overridden; yazi's default rules already route text files
+# here, so they pick this up without touching [open].
+[opener]
+edit = [
+  { run = 'yazi-open-in-hx %s', desc = "helix (running pane)", for = "unix" },
+  { run = 'hx %s', desc = "helix (new instance)", block = true, for = "unix" },
+]
+
+[mgr]
+show_hidden = true
+show_symlink = true
+linemode = "size"

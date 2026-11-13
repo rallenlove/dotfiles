@@ -8,6 +8,11 @@ default_layout "0"
 // without the enhanced keyboard protocol.
 support_kitty_keyboard_protocol true
 
+// 0.45 defaults to a stacked-list UI (all titles listed above the expanded
+// pane) and title-only frames; restore the pre-0.45 per-pane frame titles.
+stacked_pane_list false
+pane_frame_style "full"
+
 // ─── Keybind layering ──────────────────────────────────────────────────────
 //
 // Each modifier tier is owned by exactly one layer, so nothing gets
@@ -17,6 +22,7 @@ support_kitty_keyboard_protocol true
 //   Alt+arrows, Alt+<digit>    zellij    pane focus / tab switch
 //   Ctrl+PgUp, Ctrl+PgDn       zellij    tab switch
 //   Ctrl+Alt+<letter>          zellij    mode entry + one-shot actions
+//   Ctrl+Alt+-, Ctrl+Alt+=     zellij    resize focused pane
 //   Ctrl+<letter>              the TUI   zellij claims none of them
 //   Alt+<letter>               the TUI   zellij claims none of them
 //
@@ -90,8 +96,11 @@ keybinds clear-defaults=true {
         bind "Ctrl Alt f" { ToggleFloatingPanes; }
         bind "Ctrl Alt e" { TogglePaneEmbedOrFloating; }
         bind "Ctrl Alt w" { NewTab; }
+        bind "Ctrl Alt l" { Run "zellij-layout" { floating true; close_on_exit true; }; }
         bind "Ctrl Alt d" { Detach; }
         bind "Ctrl Alt q" { Quit; }
+        bind "Ctrl Alt =" { Resize "Increase"; }
+        bind "Ctrl Alt -" { Resize "Decrease"; }
     }
 
     // ─── Mode entry — each mode keeps its own identity ────────────────────

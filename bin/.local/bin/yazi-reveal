@@ -1,0 +1,9 @@
+#!/bin/sh
+# Focus this tab's yazi pane, parked on the file passed in (helix's
+# %{buffer_name}). Bound from helix; `:sh` does not block, so this feels instant.
+#
+# The pane (named "files", see zellij-pane-id) runs yazi with a client id
+# derived from its pane id (see yazi-client-id), so only it reveals the path.
+pane=$(zellij-pane-id files) || exit 1
+[ -n "$1" ] && ya emit-to "$(yazi-client-id "$pane")" reveal "$1" 2>/dev/null
+zellij action focus-pane-id "$pane"

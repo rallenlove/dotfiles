@@ -1,29 +1,31 @@
 layout {
-    default_tab_template hide_floating_panes=true {
-
+    default_tab_template {
         // the default zellij tab-bar and status bar plugins
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
         children
-        // floating_panes {
-        //     pane command="yazi"
-        // }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
     }
     tab {
         pane split_direction="vertical" {
-            pane stacked=true {
-                pane {
-                    expanded true
+            pane split_direction="horizontal" {
+                pane name="files" size="50%" {
+                    // zellij hands command panes the server's stale $PWD, and
+                    // yazi trusts $PWD over the real cwd; drop it so a tab
+                    // opened with cwd= starts yazi there. The client id lets
+                    // yazi-reveal address this pane's yazi alone.
+                    command "sh"
+                    args "-c" "unset PWD; exec yazi --client-id \"$(yazi-client-id \"$ZELLIJ_PANE_ID\")\""
+                }
+                pane name="git" size="50%" {
                     command "lazygit"
                 }
-                pane name="shell"
             }
             pane stacked=true {
-                pane {
+                pane name="editor" {
                     focus true
                     command "hx"
                 }

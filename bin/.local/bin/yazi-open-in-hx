@@ -1,0 +1,28 @@
+#!/bin/sh
+# yazi opener: hand the selected files to the helix running in this zellij
+# tab, rather than starting a second one inside yazi's pane.
+#
+# Falls back to a plain `hx` when there is no zellij session or this tab has
+# no pane named "editor" (see zellij-pane-id).
+pane=$(zellij-pane-id editor) || exec hx "$@"
+
+# `:open` takes several paths, so a multi-select in yazi becomes one command.
+# helix has no escapes inside quotes, so pick a quote the path lacks; single
+# quotes and backticks are literal, double quotes would expand `%{...}`.
+cmd=":open"
+for f in "$@"; do
+    case $f in
+        *\'*\`*|*\`*\'*) q='"' ;;
+        *\'*) q='`' ;;
+        *) q="'" ;;
+    esac
+    cmd="$cmd $q$f$q"
+done
+
+# Esc first: a helix sitting in insert mode would otherwise take the command
+# as literal text. In normal mode it just collapses the selection.
+zellij action write       -p "$pane" 27  || exit 1
+zellij action write-chars -p "$pane" "$cmd"
+zellij action write       -p "$pane" 13  # Enter
+
+zellij action focus-pane-id "$pane"

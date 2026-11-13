@@ -1,0 +1,27 @@
+#!/bin/sh
+# zellij-layout [dir]
+#
+# Apply layouts/0.kdl to the current tab (replacing its panes) with every pane
+# rooted at [dir] (default:
+# the cwd of the focused tiled pane in the caller's tab, so it works when run
+# from a floating keybind pane). The layout's `tab {` gets a `cwd=` injected
+# and is passed as a string.
+if [ -n "$1" ]; then
+    dir=$(cd "$1" && pwd) || exit 1
+else
+    dir=$(zellij action list-panes -a -j 2>/dev/null | jq -er --argjson self "${ZELLIJ_PANE_ID:--1}" '
+        map(select(.is_plugin | not)) as $panes
+        | (first($panes[] | select(.id == $self) | .tab_id) // null) as $tab
+        | first($panes[] | select((.tab_id == $tab or $tab == null) and .is_focused and (.is_floating | not)) | .pane_cwd)
+    ') || dir=$PWD
+fi
+layout="${ZELLIJ_CONFIG_DIR:-$HOME/.config/zellij}/layouts/0.kdl"
+
+# Fail loudly rather than silently dropping the cwd if the layout's `tab {`
+# line ever changes shape.
+grep -Eq '^[[:space:]]*tab \{' "$layout" || {
+    echo "zellij-layout: no 'tab {' line in $layout" >&2
+    exit 1
+}
+zellij action override-layout --apply-only-to-active-tab \
+    --layout-string "$(sed -E "s|^([[:space:]]*)tab \{|\1tab cwd=\"$dir\" {|" "$layout")"

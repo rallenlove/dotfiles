@@ -1,0 +1,12 @@
+#!/bin/sh
+# zellij-pane-id <name>
+#
+# Print the id of the terminal pane named <name> (the layout's `name=`) in the
+# caller's own tab, so each tab's helix/yazi pair only talks to itself. The
+# caller's tab is found via its inherited ZELLIJ_PANE_ID. Exits 1 if no match.
+[ -n "$ZELLIJ_PANE_ID" ] || exit 1
+zellij action list-panes --tab --json 2>/dev/null | jq -er --arg name "$1" --argjson self "$ZELLIJ_PANE_ID" '
+    map(select(.is_plugin | not)) as $panes
+    | ($panes[] | select(.id == $self) | .tab_id) as $tab
+    | first($panes[] | select(.tab_id == $tab and .title == $name) | .id)
+'

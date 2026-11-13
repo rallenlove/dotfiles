@@ -1,0 +1,10 @@
+#!/bin/sh
+# yazi-client-id <zellij-pane-id>
+#
+# Print the yazi client id for a zellij pane. yazi ids must be unique across
+# every instance on the machine, and zellij pane ids only within a session, so
+# the session name is folded in. The layout starts yazi with this id and
+# yazi-reveal addresses it, so a reveal only moves the tab's own yazi.
+[ -n "$1" ] && [ -n "$ZELLIJ_SESSION_NAME" ] || exit 1
+sum=$(printf %s "$ZELLIJ_SESSION_NAME" | cksum | cut -d' ' -f1)
+echo $((sum * 10000 + $1))

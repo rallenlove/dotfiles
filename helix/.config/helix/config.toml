@@ -16,3 +16,5 @@ tab = "all"
 [keys.normal."space"]
 "p" = "paste_clipboard_before"
 "P" = "paste_clipboard_after"
+# Focus this tab's yazi pane, parked on the current file.
+"v" = ":sh yazi-reveal %{buffer_name}"
