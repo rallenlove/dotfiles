@@ -1,0 +1,4 @@
+# Homebrew state: `brew bundle` regenerates trust.json from `trusted: true`
+# in the Brewfile, and ~/.config/homebrew is a stow symlink into this repo.
+trust.json
+trust.json.lock
