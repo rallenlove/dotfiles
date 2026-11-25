@@ -21,4 +21,8 @@ macos-option-as-alt = true
 keybind = alt+arrow_left=unbind
 keybind = alt+arrow_right=unbind
 
+# Cmd+i sends Ctrl+g (\x07) to toggle zellij's lock — Colemak-DH home row,
+# so unlocking never needs a key the TUIs might want.
+keybind = super+i=text:\x07
+
 config-file = ?config.local
