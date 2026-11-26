@@ -1,11 +1,8 @@
 // https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 theme "solarized-dark"
 on_force_close "quit"
-default_layout "0"
+default_layout "primary"
 
-// Nice to have, not load-bearing: Ctrl+Alt+<key> already encodes as ESC + the
-// control byte, so it stays distinguishable from Ctrl+<key> even on terminals
-// without the enhanced keyboard protocol.
 support_kitty_keyboard_protocol true
 
 // 0.45 defaults to a stacked-list UI (all titles listed above the expanded
@@ -13,56 +10,25 @@ support_kitty_keyboard_protocol true
 stacked_pane_list false
 pane_frame_style "full"
 
-// ─── Keybind layering ──────────────────────────────────────────────────────
+// ─── Keybinds ──────────────────────────────────────────────────────────────
 //
-// Each modifier tier is owned by exactly one layer, so nothing gets
-// intercepted on its way down to helix / yazi / claude:
+// unlock-first preset (`zellij setup --dump-keybinds unlock-first`): sessions
+// start locked, so every Ctrl+<letter> but Ctrl+g reaches helix / yazi / claude.
+// Ctrl+g (Cmd+i in ghostty) unlocks; then single letters enter modes
+// (p pane, t tab, r resize, s scroll, o session, m move), e.g. o n jumps to
+// the next pane needing attention.
 //
-//   super (cmd)                ghostty   windows, tabs, splits, clipboard
-//   Alt+arrows, Alt+<digit>    zellij    pane focus / tab switch
-//   Ctrl+PgUp, Ctrl+PgDn       zellij    tab switch
-//   Ctrl+Alt+<letter>          zellij    mode entry + one-shot actions
-//   Ctrl+Alt+-, Ctrl+Alt+=     zellij    resize focused pane
-//   Ctrl+<letter>              the TUI   zellij claims none of them
-//   Alt+<letter>               the TUI   zellij claims none of them
+// Live while locked: Alt+h/j/k/l and Alt+arrows (focus), Alt+n (new pane),
+// Alt+f (floating), Alt+i/o (move tab), Alt+=/-/[/]/p. These shadow helix's
+// Alt tree-sitter letters (Alt+o/i/n/p); the arrow forms are taken too.
 //
-// Defaults are cleared rather than patched: zellij's `shared_except "locked"`
-// block claimed Ctrl+g/q/p/n/s/o/t/h/b and Alt+n/p/i/o/f/-/arrows in *every*
-// mode, which swallowed helix's jump_backward (Ctrl+o), page_up (Ctrl+b),
-// save_selection (Ctrl+s), picker nav (Ctrl+p/n/t) and its Alt tree-sitter
-// grid, plus yazi's <A-j>/<A-k> and claude's Ctrl+o/t/b/g.
-//
-// Modes keep their real identities — no mode is repurposed as a generic
-// leader, so the status bar always names the mode you are actually in.
-//
-// Nav is arrows and digits only, never letters. Letters appear solely as
-// mnemonics for mode entry and one-shot actions.
-//
-// ── Why zellij takes Alt+arrows but no Alt+letter ──
-//
-// Helix binds every tree-sitter motion twice, once on a letter and once on an
-// arrow, so the two columns are redundant:
-//
-//     expand to parent   Alt+o   Alt+Up
-//     shrink to child    Alt+i   Alt+Down
-//     next sibling       Alt+n   Alt+Right
-//     prev sibling       Alt+p   Alt+Left
-//
-// Taking the arrow column for pane focus and leaving the whole letter column
-// to helix costs helix nothing — every motion is still reachable. This is
-// Yazelix's trick (github.com/Yazelix/nova), except it leaves Alt+p bound to
-// TogglePaneInGroup and so loses prev-sibling in both forms; clearing defaults
-// here keeps all four.
-//
-// Knock-on benefit: Ctrl+arrows are no longer needed for focus, so helix's and
-// yazi's Ctrl+Left/Ctrl+Right word motion survives too.
-//
-// Ctrl+Shift is deliberately NOT used as the escalation tier: it has no
-// pre-protocol encoding, so a terminal without the enhanced keyboard protocol
-// collapses Ctrl+Shift+<key> onto Ctrl+<key> and zellij would silently start
-// eating TUI keys again. Ctrl+Alt degrades gracefully instead.
-//
-// Shift+arrows are avoided: ghostty binds them to adjust_selection and never
-// forwards them. Ctrl+Shift+Tab is avoided: ghostty binds it to previous_tab.
+// ghostty owns super (Cmd), Shift+arrows (adjust_selection) and Ctrl+Shift+Tab
+// (previous_tab); none of those reach zellij.
 //
 keybinds preset="unlock-first"
+
+// Desktop app (`zellij terminal`, the tray icon).
+terminal {
+    font "CommitMono Nerd Font"
+    font_size 13
+}

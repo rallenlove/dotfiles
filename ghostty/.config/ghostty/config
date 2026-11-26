@@ -2,7 +2,7 @@
 theme = iTerm2 Solarized Dark
 # theme = TokyoNight
 
-font-family = FiraMono Nerd Font
+font-family = CommitMono Nerd Font
 
 macos-icon = custom
 maximize = true
